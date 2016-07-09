@@ -2,38 +2,37 @@
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="data/css/base.css">
+		<script src="data\js\switch.js"></script>
 		<title>
 			WANG Zhiyu's Homepage
 		</title>
 	</head>
 	<body>
-	<div id="container" style="width:500px">
+	<div id="container" class="cont">
 
 	<div id="header">
-		<h1 style="margin-bottom:0;">Main Title of Web Page</h1>
+		<h1 style="margin-bottom:0;">WANG Zhiyu's Homepage</h1><br><br>
 	</div>
 
-	<div id="menu" style="height:200px;width:100px;float:left;">
+	<div id="menu" class="menu" style="height:550px;width:200px;float:left;">
 		<table border="0">
-		<tr><td>1</td></tr>
-		<tr><td>2</td></tr>
-		<tr><td>3</td></tr>
-		<tr><td>4</td></tr>
-		<tr><td>5</td></tr>
+		<tr><td class="switch" id="home" onclick="page_swit('home')">Home</td></tr>
+		<tr><td class="switch" id="cv" onclick="page_swit('cv')">Curriculum Vitae</td></tr>
+		<tr><td class="switch" id="publ" onclick="page_swit('publ')">Publications</td></tr>
+		<tr><td><a href="exp_cal.html">实验计算</a> </td></tr>
 		</table>
 	</div>
 
-	<div id="content" style="height:200px;width:400px;float:left;">
-		<iframe src="cv.html" width="300">
+	<div id="content" style="height:550px;width:600px;float:left;">
+		<iframe id="ifra" src="home.html" style="height:550px;width:600px;float:left;">
 		</iframe>
 	</div>
 
 	<div id="footer" style="clear:both;text-align:center;">
-	Copyright © W3CSchool.cc
+	
 	</div>
 
-</div>
-		why it does not change?
-		<a href="exp_cal.html">实验计算</a> 
+	</div>
+
 	</body>
 </html>
