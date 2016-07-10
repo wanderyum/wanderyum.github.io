@@ -23,6 +23,13 @@ function page_swit(a)
 		document.getElementById("publ").style.border = "2px solid red";
 	}
 	break;
+	case "sett":
+	{
+		document.getElementById("ifra").src = "setting.html";
+		hide_border()
+		document.getElementById("sett").style.border = "2px solid red";
+	}
+	break;
 	default:
 		;
 	}
