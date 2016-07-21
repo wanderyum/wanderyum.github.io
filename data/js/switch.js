@@ -30,6 +30,13 @@ function page_swit(a)
 		document.getElementById("sett").style.border = "2px solid red";
 	}
 	break;
+	case "link":
+	{
+		document.getElementById("ifra").src = "link.html";
+		hide_border()
+		document.getElementById("link").style.border = "2px solid red";
+	}
+	break;
 	default:
 		;
 	}
