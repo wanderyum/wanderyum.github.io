@@ -37,6 +37,12 @@ function page_swit(a)
 		document.getElementById("link").style.border = "2px solid red";
 	}
 	break;
+	case "usof":
+	{
+		document.getElementById("ifra").src = "useful_softwares.html";
+		hide_border()
+		document.getElementById("usof").style.border = "2px solid red";
+	}
 	default:
 		;
 	}
