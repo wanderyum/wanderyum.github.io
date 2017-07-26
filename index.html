@@ -4,19 +4,21 @@
 	<meta charset="utf-8">
 	<title>Manfredo的主页</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/switch.js"></script>
 </head>
 
 <body>
 	<div id="main">
 		<div class="navig">
-			<input class="navbtn" type="button" value="主页" onClick="location.href='index.html'" />
-			<input class="navbtn" type="button" value="笔记" onClick="location.href='note/readme.md'"/>
-			<input class="navbtn" type="button" value="程序" />
-			<input class="navbtn" type="button" value="科研" onClick="location.href='scitificr/index.html'" />
-			<input class="navbtn" type="button" value="简历" />
+			<input class="navbtn" type="button" value="主页" onclick="page_swit('home')" />
+			<input class="navbtn" type="button" value="笔记" onclick="page_swit('note')" />
+			<input class="navbtn" type="button" value="程序" onclick="page_swit('program')" />
+			<input class="navbtn" type="button" value="科研" onclick="page_swit('scitific_research')"  />
+			<input class="navbtn" type="button" value="关于我" onclick="page_swit('resume')" />
 		</div>
-		<div>
-			天行健，君子以自强不息。地势坤，君子以厚德载物。		----《周易》
+		<div id="content">
+			<iframe id="ifra" src="home.html" >
+			</iframe>
 		</div>
 	</div>
 </body>
