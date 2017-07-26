@@ -1,41 +1,23 @@
-﻿<html>
-	<head>
-		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="data/css/base.css">
-		<script src="data\js\switch.js"></script>
-		<title>
-			WANG Zhiyu's Homepage~
-		</title>
-	</head>
-	<body>
-	<div id="container" class="cont">
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Manfredo的主页</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
 
-	<div id="header">
-		<h1 style="margin-bottom:0;">WANG Zhiyu's Homepage</h1><br><br>
+<body>
+	<div id="main">
+		<div class="navig">
+			<input class="navbtn" type="button" value="主页" onClick="location.href='index.html'" />
+			<input class="navbtn" type="button" value="笔记" />
+			<input class="navbtn" type="button" value="程序" />
+			<input class="navbtn" type="button" value="科研" onClick="location.href='scitificr/index.html'" />
+			<input class="navbtn" type="button" value="简历" />
+		</div>
+		<div>
+			天行健，君子以自强不息。地势坤，君子以厚德载物。		----《周易》
+		</div>
 	</div>
-
-	<div id="menu" class="menu" style="height:550px;width:200px;float:left;">
-		<table border="0">
-		<tr><td class="switch" id="home" onclick="page_swit('home')">Home</td></tr>
-		<tr><td class="switch" id="cv" onclick="page_swit('cv')">Curriculum Vitae</td></tr>
-		<tr><td class="switch" id="publ" onclick="page_swit('publ')">Publications</td></tr>
-		<tr><td class="switch" id="sett" onclick="page_swit('sett')">My Settings</td></tr>
-		<tr><td class="switch" id="link" onclick="page_swit('link')">Research Link</td></tr>
-		<tr><td class="switch" id="usof" onclick="page_swit('usof')">Useful Softwares</td></tr>
-		<tr><td><a href="exp_cal.html" target="_blank">实验计算</a> </td></tr>
-		</table>
-	</div>
-
-	<div id="content" style="height:550px;width:600px;float:left;">
-		<iframe id="ifra" src="home.html" style="height:550px;width:600px;float:left;">
-		</iframe>
-	</div>
-
-	<div id="footer" style="clear:both;text-align:center;">
-	
-	</div>
-
-	</div>
-
-	</body>
+</body>
 </html>

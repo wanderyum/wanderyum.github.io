@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>实验计算</title>
+</head>
+
+<body>
+	<script src="data\js\exp_cal.js"></script>
+	<div id="mol_cal">
+		<h1>摩尔浓度计算</h1>
+		<b>质量(g)=浓度(mol/L)×体积(L)×分子量(g/mol)</b><br><br>
+		<table border="0">
+		<tr>
+		<td>质量</td>
+		<td></td>
+		<td></td>
+		<td>浓度</td>
+		<td></td>
+		<td>体积</td>
+		<td></td>
+		<td>分子量</td>
+		</tr>
+		<tr>
+		<td><p id="mass"></p></td>
+		<td>
+			<form>
+			<select id="unit_mass">
+			<option value="mg">mg</option>
+			<option value="g">g</option>
+			<option value="ug">ug</option>
+			</select>
+			</form>
+		</td>
+		<td>=</td>
+		<td><input type="text" id="conc"></td>
+		<td>
+				<form>
+				<select id="unit_conc">
+				<option value="mM">mM</option>
+				<option value="M">M</option>
+				<option value="uM">uM</option>
+				</select>
+				</form>
+		</td>
+		<td><input type="text" id="volu"></td>
+		<td>
+			<form>
+			<select id="unit_volu">
+			<option value="mL">mL</option>
+			<option value="L">L</option>
+			<option value="uL">uL</option>
+			</select>
+			</form>
+		</td>
+		<td><input type="text" id="mol_wei"></td>
+		</tr>
+		</table>
+		<button type="button" onclick="cal_mass()">计算质量</button>
+	</div>
+
+</body>
+
+</html>
