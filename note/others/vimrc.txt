@@ -1,16 +1,19 @@
-"ÏÔÊ¾ĞĞºÅ
+"æ˜¾ç¤ºè¡Œå·
 set number
-"×ÖºÅ
+"å­—å·
 set guifont=Courier_new:h14:b:cDEFAULT
-"±àÂë
+"ç¼–ç 
 set fencs=utf-8,gbk
-"ÅäÉ«
+"é…è‰²
 colorscheme murphy
-"È¡Ïûun~
+"Tab=4Space
+set ts=4
+set expandtab
+"å–æ¶ˆun~
 set noundofile
 set nobackup
 set noswapfile
-"F5±àÒë
+"F5ç¼–è¯‘
 map <F5> :call CompileRun()<CR>
 func! CompileRun()
     exec "w"
