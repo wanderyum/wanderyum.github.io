@@ -13,7 +13,7 @@ function page_swit(para){
 			break;
 		}
 		case "scitific_research":{
-			document.getElementById("ifra").src = "scitificr/index.html";
+			document.getElementById("ifra").src = "scitificr/scitificr.html";
 			break;
 		}
 		case "resume":{

@@ -1,7 +1,9 @@
-
+#body{
+	background-image: url(../picture/bg2.jpg);
+}
 #main{
 	width:800px; 
-	margin:2% auto 0 auto; 
+	margin:2% auto 0 auto;
 }
 #content{
 	width: 800px; 
@@ -13,10 +15,11 @@
 	font: 50px/100% 'Microsoft yahei',Arial, Helvetica, sans-serif;
 }
 #ifra{
-	width: 800px; 
+	width: 730px; 
 	border: none;
-	height: 800px;
+	height: 730px;
 	margin: 15px 35px 10px 35px			/*±ß¾à£ºÉÏ ÓÒ ÏÂ ×ó*/
+	/*background-color: #FF0000;*/
 }
 .navig{
 	text-align: center;
