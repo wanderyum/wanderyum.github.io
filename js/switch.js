@@ -5,7 +5,7 @@ function page_swit(para){
 			break;
 		}
 		case "note":{
-			document.getElementById("ifra").src = "note/note.html";
+			document.getElementById("ifra").src = "note/favourite.html";
 			break;
 		}
 		case "program":{
