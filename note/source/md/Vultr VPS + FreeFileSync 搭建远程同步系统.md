@@ -89,7 +89,7 @@ sshfs ssh newusr@2.2.2.2:/home/newusr/Sync/ $localdir
 
 最后是终止映射:
 
-``` java
+``` bash
 fusermount -u $localdir
 ```
 

@@ -2,6 +2,11 @@ import markdown2
 import codecs
 import sys
 
+css_style = ['code', 'fruity', 'manni', 'native', 'perldoc']
+css = css_style[3]
+
+additional_css = ''
+
 def main(argv):
     md_name = argv[0]
 
@@ -16,7 +21,7 @@ def main(argv):
             output_file.write(add_body_and_head(html_text, md_name[:-3]))
 
 def add_body_and_head(content, title):
-    head = '<!DOCTYPE HTML>\n<html>\n<head>\n\t<meta charset=\"utf-8\">\n\t<title>%s</title>\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"css/code.css\">\n</head>\n<body>\n' % (title)
+    head = '<!DOCTYPE HTML>\n<html>\n<head>\n\t<meta charset=\"utf-8\">\n\t<title>%s</title>\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"css/%s.css\">\n\t%s</head>\n<body>\n' % (title, css, additional_css)
     tail = '\n</body>\n</html>'
     return head + content + tail
 
