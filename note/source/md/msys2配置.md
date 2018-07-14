@@ -1,13 +1,13 @@
 [//]: # (20180714)
-# msys2ÅäÖÃ
+# msys2é…ç½®
 
-ÕâÀï¼ÙÉèÄãÒÑ¾­³É¹¦°²×°[msys2](https://www.msys2.org/), ²¢ÇÒ°²×°Ä¿Â¼Îª`$directory`, ±ÈÈçËµ³¤Õâ¸öÑù×Ó: `C:\ProgramFiles\msys64`¡£
+è¿™é‡Œå‡è®¾ä½ å·²ç»æˆåŠŸå®‰è£…[msys2](https://www.msys2.org/), å¹¶ä¸”å®‰è£…ç›®å½•ä¸º`$directory`, æ¯”å¦‚è¯´é•¿è¿™ä¸ªæ ·å­: `C:\ProgramFiles\msys64`ã€‚
 
-### ¸Ä±äÈí¼şÔ´
-°²×°ºÃmsysºóµÄµÚÒ»¼şÊÂÊÇ¸Ä±äÈí¼şÔ´, ·ñÔòÖ±½ÓÁ¬¹Ù·½·şÎñÆ÷ËÙ¶È¸ĞÈË¡£ÕâÀïÍÆ¼öÖĞ¹ú¿ÆÑ§¼¼Êõ´óÑ§µÄÈí¼şÔ´(ustc)¡£
+### æ”¹å˜è½¯ä»¶æº
+å®‰è£…å¥½msysåçš„ç¬¬ä¸€ä»¶äº‹æ˜¯æ”¹å˜è½¯ä»¶æº, å¦åˆ™ç›´æ¥è¿å®˜æ–¹æœåŠ¡å™¨é€Ÿåº¦æ„Ÿäººã€‚è¿™é‡Œæ¨èä¸­å›½ç§‘å­¦æŠ€æœ¯å¤§å­¦çš„è½¯ä»¶æº(ustc)ã€‚
 
-+ ÓÃ¼ÇÊÂ±¾´ò¿ª`$directory\etc\pacman.d\mirrorlist.msys`, °ÑustcÔ´¼Óµ½µÚÒ»ĞĞ:
-``` python
++ ç”¨è®°äº‹æœ¬æ‰“å¼€`$directory\etc\pacman.d\mirrorlist.msys`, æŠŠustcæºåŠ åˆ°ç¬¬ä¸€è¡Œ:
+``` text
 ## Primary
 ## msys2.org
 Server = http://mirrors.ustc.edu.cn/msys2/msys/$arch/
@@ -16,8 +16,8 @@ Server = https://downloads.sourceforge.net/project/msys2/REPOS/MSYS2/$arch
 Server = http://www2.futureware.at/~nickoe/msys2-mirror/msys/$arch/
 ```
 
-+ ÓÃ¼ÇÊÂ±¾´ò¿ª`$directory\etc\pacman.d\mirrorlist.mingw32`, °ÑustcÔ´¼Óµ½µÚÒ»ĞĞ:
-``` python
++ ç”¨è®°äº‹æœ¬æ‰“å¼€`$directory\etc\pacman.d\mirrorlist.mingw32`, æŠŠustcæºåŠ åˆ°ç¬¬ä¸€è¡Œ:
+``` text
 ## Primary
 ## msys2.org
 Server = http://mirrors.ustc.edu.cn/msys2/mingw/i686/
@@ -26,8 +26,8 @@ Server = https://downloads.sourceforge.net/project/msys2/REPOS/MINGW/i686
 Server = http://www2.futureware.at/~nickoe/msys2-mirror/mingw/i686
 ```
 
-+ ÓÃ¼ÇÊÂ±¾´ò¿ª`$directory\etc\pacman.d\mirrorlist.mingw64`, °ÑustcÔ´¼Óµ½µÚÒ»ĞĞ:
-``` python
++ ç”¨è®°äº‹æœ¬æ‰“å¼€`$directory\etc\pacman.d\mirrorlist.mingw64`, æŠŠustcæºåŠ åˆ°ç¬¬ä¸€è¡Œ:
+``` text
 ## Primary
 ## msys2.org
 Server = http://mirrors.ustc.edu.cn/msys2/mingw/x86_64
@@ -36,34 +36,37 @@ Server = https://downloads.sourceforge.net/project/msys2/REPOS/MINGW/x86_64
 Server = http://www2.futureware.at/~nickoe/msys2-mirror/mingw/x86_64
 ```
 
-### ÓÃpacman¸üĞÂÏµÍ³ÒÔ¼°°²×°Èí¼ş
-msys2ÓÃpacman¹ÜÀíÈí¼ş, ºÍarchlinuxÊÇÒ»ÑùµÄ¡£pacman³£ÓÃÃüÁî:
+### ç”¨pacmanæ›´æ–°ç³»ç»Ÿä»¥åŠå®‰è£…è½¯ä»¶
+msys2ç”¨pacmanç®¡ç†è½¯ä»¶, å’Œarchlinuxæ˜¯ä¸€æ ·çš„ã€‚pacmanå¸¸ç”¨å‘½ä»¤:
 
 ``` bash
-pacman -Syu       # Í¬²½Èí¼ş¿â²¢¸üĞÂÏµÍ³µ½×îĞÂ×´Ì¬ 
-pacman -Ss vim    # ËÑË÷Èí¼ş²Ö¿âÀïÃû×Öº¬ÓĞvimµÄÈí¼ş°ü
-pacman -S git     # °²×°git
-pacman -R git     # É¾³ıgit
+pacman -Syu       # åŒæ­¥è½¯ä»¶åº“å¹¶æ›´æ–°ç³»ç»Ÿåˆ°æœ€æ–°çŠ¶æ€ 
+pacman -Ss vim    # æœç´¢è½¯ä»¶ä»“åº“é‡Œåå­—å«æœ‰vimçš„è½¯ä»¶åŒ…
+pacman -S git     # å®‰è£…git
+pacman -R git     # åˆ é™¤git
 ```
 
-### Ìí¼ÓÓÒ¼üÃüÁî"msys here"
-ÒÔwindows 10ÎªÀı¡£
-1 ÕÒµ½msys2µÄ°²×°Ä¿Â¼`$directory`, ĞÂ½¨`msys2.bat`, ÄÚÈİÈçÏÂ(½«`$directory`»»³É×Ô¼ºµÄÂ·¾¶):
+### æ·»åŠ å³é”®å‘½ä»¤"msys here"
+ä»¥windows 10ä¸ºä¾‹ã€‚
 
-``` bash
+1 æ‰¾åˆ°msys2çš„å®‰è£…ç›®å½•`$directory`, æ–°å»º`msys2.bat`, å†…å®¹å¦‚ä¸‹(å°†`$directory`æ¢æˆè‡ªå·±çš„è·¯å¾„):
+
+``` text
 $directory\msys2_shell.cmd -mingw64 -where %cd%
 ```
 
-2 `Win + r`Æô¶¯regedit, ½øÈë`HKEY_CLASSES_ROOT\Directory\Background\shell`, ĞÂ½¨**Ïî**, ÃüÃûÎª`msys2`(ºÍcmd¡¢PowershellÍ¬Ò»µÈ¼¶)¡£
-3 ÓÒ¼ümsys2, ÔÙĞÂ½¨**Ïî**, ÃüÃûÎª`command`¡£Ñ¡ÖĞĞÂ½¨µÄ`command`, ¸ü¸ÄÓÒ±ß´°¿ÚµÄÖµÎª`$directory\msys2.bat`
-4 ÓÒ¼ümsys2, ĞÂ½¨**×Ö·û´®**, Ãû³ÆÎªicon, ÖµÎª`$directory\msys2.ico`
+2 `Win + r`å¯åŠ¨regedit, è¿›å…¥`HKEY_CLASSES_ROOT\Directory\Background\shell`, æ–°å»º**é¡¹**, å‘½åä¸º`msys2`(å’Œcmdã€PowershellåŒä¸€ç­‰çº§)ã€‚
 
-ÔÚÕâ¸ö¹ı³ÌÖĞ, `msys2`ÏîÊ¹ÏµÍ³Ê¶±ğÁËÔÚÓÒ¼ü²Ëµ¥ÖĞÒªÌí¼ÓÃûÎª`msys2`µÄÑ¡Ïî, `command`ÏîÌí¼ÓÖ¸³ö¹ØÁªµÄ³ÌĞòÎ»ÖÃ, `icon`×Ö·û´®Ö¸ÏòÒªÓÃµÄÍ¼±êµØÖ·¡£
+3 å³é”®msys2, å†æ–°å»º**é¡¹**, å‘½åä¸º`command`ã€‚é€‰ä¸­æ–°å»ºçš„`command`, æ›´æ”¹å³è¾¹çª—å£çš„å€¼ä¸º`$directory\msys2.bat`
 
-²Î¿¼ÎÄÕÂ:
+4 å³é”®msys2, æ–°å»º**å­—ç¬¦ä¸²**, åç§°ä¸ºicon, å€¼ä¸º`$directory\msys2.ico`
 
-[¸ø MSYS2 Ìí¼ÓÖĞ¿Æ´óµÄÔ´](https://blog.csdn.net/liyuanbhu/article/details/56496501)
+åœ¨è¿™ä¸ªè¿‡ç¨‹ä¸­, `msys2`é¡¹ä½¿ç³»ç»Ÿè¯†åˆ«äº†åœ¨å³é”®èœå•ä¸­è¦æ·»åŠ åä¸º`msys2`çš„é€‰é¡¹, `command`é¡¹æ·»åŠ æŒ‡å‡ºå…³è”çš„ç¨‹åºä½ç½®, `icon`å­—ç¬¦ä¸²æŒ‡å‘è¦ç”¨çš„å›¾æ ‡åœ°å€ã€‚
 
-[pacman³£ÓÃÃüÁî](https://www.2cto.com/kf/201704/620094.html)
+å‚è€ƒæ–‡ç« :
 
-[Îªmsys2Ìí¼ÓÓÒ¼ü£¬ÔÚµ±Ç°Ä¿Â¼´ò¿ª](https://blog.csdn.net/u011924787/article/details/69485944)
+[ç»™ MSYS2 æ·»åŠ ä¸­ç§‘å¤§çš„æº](https://blog.csdn.net/liyuanbhu/article/details/56496501)
+
+[pacmanå¸¸ç”¨å‘½ä»¤](https://www.2cto.com/kf/201704/620094.html)
+
+[ä¸ºmsys2æ·»åŠ å³é”®ï¼Œåœ¨å½“å‰ç›®å½•æ‰“å¼€](https://blog.csdn.net/u011924787/article/details/69485944)
