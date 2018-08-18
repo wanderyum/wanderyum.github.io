@@ -20,6 +20,15 @@ function page_swit(para){
 			document.getElementById("ifra").src = "resume/resume.html";
 			break;
 		}
+        case "test":{
+			document.getElementById("ifra").src = "note/note_index.html";
+			break;
+		}
 		
 	}
+}
+
+function note_goto(name){
+    document.getElementById("body").innerHTML = "<iframe id='subifra' src=source/"+name+".html ></iframe>";
+
 }
