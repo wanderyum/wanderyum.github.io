@@ -2,7 +2,7 @@ import os
 from func_share import get_date, generate_html, sort_by_dates, generate_index
 
 # 若html文件存在是否重复生成
-generate_exist = True
+generate_exist = False
 
 
 md_root = './source/md'
@@ -31,7 +31,7 @@ else:
     for item in aim_paths:          # aim_paths -> markdown file path
         md_path = os.path.join(md_root, item)
         date = get_date(md_path)     # date(int)
-        generate_html()
+        generate_html(md_path)
         html_path = html_root + '/' + item[:-3]+'.html'
         date_title_path.append((date, item[:-3], html_path))
     date_title_path = sort_by_dates(date_title_path)
