@@ -5,7 +5,7 @@ function page_swit(para){
 			break;
 		}
 		case "note":{
-			document.getElementById("ifra").src = "note/favourite.html";
+			document.getElementById("ifra").src = "note/note_index.html";
 			break;
 		}
 		case "program":{
@@ -20,15 +20,9 @@ function page_swit(para){
 			document.getElementById("ifra").src = "resume/resume.html";
 			break;
 		}
-        case "test":{
-			document.getElementById("ifra").src = "note/note_index.html";
-			break;
-		}
-		
 	}
 }
 
-function note_goto(name){
-    document.getElementById("body").innerHTML = "<iframe id='subifra' src=source/"+name+".html ></iframe>";
-
+function note_goto(path){
+    document.getElementById("body").innerHTML = "<iframe id='subifra' src=\""+path+"\" ></iframe>";
 }
