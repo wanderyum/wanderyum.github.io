@@ -1,4 +1,5 @@
 [//]: # (20180711)
+[//]: # (购买Vultr作为服务器配合FreeFileSync软件实现远程同步。)
 # Vultr VPS + FreeFileSync 搭建远程同步系统
 本文主要介绍通过Vultr VPS作为服务器配合软件FreeFileSync的sftp功能搭建远程同步系统。其基本原理为通过sshfs将服务器上的文件夹映射到本地文件夹，在用FreeFileSync进行文件夹内容的比较与同步。
 这里假设你已经购买Vultr虚拟服务器并成功部署，如果需要详细购买流程可以参考[这篇文章](https://blog.csdn.net/sinat_32829963/article/details/79261297)。本文搭建VPS用的系统是Ubuntu 16.04 x64， 下面从ssh登录VPS开始，以LinuxMint 18.3为例。

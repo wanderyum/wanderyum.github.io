@@ -3,11 +3,13 @@ import os
 import markdown2
 import codecs
 
-def get_date(path):
+def get_date_desc(path):
     with open(path, 'r',encoding='UTF-8') as f:
         line = f.readline()
-        date = re.findall('\d{8}', line)
-        return int(date[0])
+        date = re.findall('\d{8}', line)[0]
+        line = f.readline()
+        desc = re.findall('\(.+\)', line)[0]
+        return date, desc[1:-1]
 
 def generate_html(path, destination='./source', additional_css='', style=3):
     css_style = ['code', 'fruity', 'manni', 'native', 'perldoc']
@@ -29,10 +31,10 @@ def add_head_and_tail(content, title, css, additional_css):
     return head+content+tail
 
 
-def sort_by_dates(date_title_path):
-    return sorted(date_title_path, key=lambda x: x[0], reverse=False)
+def sort_by_dates(date_title_desc_path):
+    return sorted(date_title_desc_path, key=lambda x: x[0], reverse=False)
     
-def generate_index(date_title_path, destination='.'):
+def generate_index(date_title_desc_path, destination='.'):
     head = '''
 <!DOCTYPE html>
 <html>
@@ -50,8 +52,7 @@ def generate_index(date_title_path, destination='.'):
 </body>
 </html>'''
     content = ''
-    for date, title, path in date_title_path:
-        _date = str(date)
-        content += '<li><b>{0}</b><br>\nURL: <i><a href=\"#\" onclick=\"note_goto(\'{1}\')\">{0}</a></i>\n<br>{2}年{3}月{4}日</li>'.format(title, path, int(_date[:4]), int(_date[4:6]), int(_date[6:8]))
+    for date, title, desc, path in date_title_desc_path:
+        content += '<li><b><a href=\"#\" onclick=\"note_goto(\'{1}\')\">{0}</a></b><br>\n<i>{5}</i>\n<br>{2}年{3}月{4}日</li>'.format(title, path, int(date[:4]), int(date[4:6]), int(date[6:8]), desc)
     with open(os.path.join(destination, 'note_index.html'), mode='w', encoding='UTF-8') as f:
         f.write(head+content+tail)

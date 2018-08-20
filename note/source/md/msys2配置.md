@@ -1,4 +1,5 @@
 [//]: # (20180714)
+[//]: # (msys2是一个GNU出品的windows下最小Linux环境, 可以运行很多Linux程序。本文介绍其安装后的配置过程。)
 # msys2配置
 
 这里假设你已经成功安装[msys2](https://www.msys2.org/), 并且安装目录为`$directory`, 比如说长这个样子: `C:\ProgramFiles\msys64`。

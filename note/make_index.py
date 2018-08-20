@@ -1,8 +1,8 @@
 import os
-from func_share import get_date, generate_html, sort_by_dates, generate_index
+from func_share import get_date_desc, generate_html, sort_by_dates, generate_index
 
 # 若html文件存在是否重复生成
-generate_exist = False
+generate_exist = True
 
 
 md_root = './source/md'
@@ -27,15 +27,15 @@ print('aim_paths:',aim_paths)
 if len(aim_paths) == 0:
     print('No new markdown file to be converted...')
 else:
-    date_title_path = []
+    date_title_desc_path = []
     for item in aim_paths:          # aim_paths -> markdown file path
         md_path = os.path.join(md_root, item)
-        date = get_date(md_path)     # date(int)
+        date_desc = get_date_desc(md_path)     # date(int)
         generate_html(md_path)
         html_path = html_root + '/' + item[:-3]+'.html'
-        date_title_path.append((date, item[:-3], html_path))
-    date_title_path = sort_by_dates(date_title_path)
-    generate_index(date_title_path, destination='.')
+        date_title_desc_path.append((date_desc[0], item[:-3], date_desc[1], html_path))
+    date_title_desc_path = sort_by_dates(date_title_desc_path)
+    generate_index(date_title_desc_path, destination='.')
 
 
 
