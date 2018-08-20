@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>./source/2019阿里校招编程测试, 光明小学接力赛路径问题(1)</title>
+	<link rel="stylesheet" type="text/css" href="css/native.css">
+	</head>
+<body>
+<h1>2019阿里校招编程测试, 光明小学接力赛路径问题(1)</h1>
+
+<h3>题目</h3>
+
+<p>光明小学的小朋友们要举行一年一度的接力跑大赛了，但是小朋友们却遇到了一个难题：设计接力跑大赛的线路，你能帮助他们完成这项工作么？</p>
+
+<p>光明小学可以抽象成一张有N个节点的图，每两点间都有一条道路相连。光明小学的每个班都有M个学生，所以你要为他们设计出一条恰好经过M条边的路径。</p>
+
+<p>光明小学的小朋友们希望全盘考虑所有的因素，所以你需要把任意两点间经过M条边的最短路径的距离输出出来以供参考。</p>
+
+<p>你需要设计这样一个函数：</p>
+
+<div class="codehilite"><pre><span></span><code><span class="n">res</span><span class="p">[][]</span> <span class="n">Solve</span><span class="p">(</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">map</span><span class="p">[][]);</span>
+</code></pre></div>
+
+<p><strong>注意：map必然是N * N的二维数组，且map[i][j] == map[j][i]，map[i][i] == 0，-1e8 &lt;= map[i][j] &lt;= 1e8。（道路全部是无向边，无自环）2 &lt;= N &lt;= 100, 2 &lt;= M &lt;= 1e6。要求时间复杂度控制在O(N^3*log(M))。</strong></p>
+
+<p>map数组表示了一张稠密图，其中任意两个不同节点i,j间都有一条边，边的长度为map[i][j]。N表示其中的节点数。</p>
+
+<p>你要返回的数组也必然是一个N * N的二维数组，表示从i出发走到j，经过M条边的最短路径。
+你的路径中应考虑包含重复边的情况。</p>
+
+<p>样例:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="n">N</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">M</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="n">map</span> <span class="o">=</span> <span class="p">{</span>
+<span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">},</span>
+<span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">},</span>
+<span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">}};</span>
+</code></pre></div>
+
+<p>输出结果:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="p">{</span>
+<span class="p">{</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">},</span>
+<span class="p">{</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">},</span>
+<span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">}};</span>
+</code></pre></div>
+
+<p>样例解释:</p>
+
+<pre><code>1-&gt;1有两种方法: 1-&gt;2-&gt;1(长度为2+2=4), 1-&gt;3-&gt;1（长度为3+3=6）
+2-&gt;2有两种方法: 2-&gt;1-&gt;2(长度为2+2=4), 2-&gt;3-&gt;2（长度为1+1=2）
+1-&gt;1有两种方法: 3-&gt;1-&gt;3(长度为3+3=6), 3-&gt;2-&gt;3（长度为1+1=2）
+1-&gt;2只有一种方法: 1-&gt;3-&gt;2(长度为3+1=4)
+1-&gt;3只有一种方法: 1-&gt;2-&gt;3(长度为2+1=4)
+2-&gt;3只有一种方法: 2-&gt;1-&gt;3(长度为2+3=5)
+根据对称性可以得到其它部分的答案。
+</code></pre>
+
+<h3>思路</h3>
+
+<h4>先考虑M=1的情况:</h4>
+
+<p>设起点为i, 终点为j</p>
+
+<p>约束: 起点和终点不能相同</p>
+
+<p>则距离distance(i,j)为<code>map[i][j]</code>(i!=j)。</p>
+
+<h4>考虑M增加到2:</h4>
+
+<p>设起点为i, 终点为j, 中间经过点为k</p>
+
+<p>约束: 起点和中间点, 中间点和终点不能相同</p>
+
+<p>则对于一个确定的中间点k, 距离distance(i,j,k)为<code>map[i][k]+map[k][j]</code>(i!=k且k!=j)</p>
+
+<p>根据题目要求, 两点间距离为所有k中距离最短的路程: distance(i,j) = min(distance(i,j,k)) for every k</p>
+
+<h4>考虑M增加到m:</h4>
+
+<p>设起点为i, 终点为j, 终点前一个点为k, i到k走了m-1步形成的距离矩阵为D</p>
+
+<p>约束: 终点和终点前一个点不能相同</p>
+
+<p>则对于一个确定的终点前一个点k, 距离distance(i,j,k)为<code>D[i,k]+map[k,j]</code>(k!=j)</p>
+
+<p>根据题目要求, 起点到终点距离为所有k中距离最短的路程: distance(i,j) = min(distance(i,j,k)) for every k</p>
+
+<h4>时间复杂度</h4>
+
+<p>外层M次循环, 内层嵌套两层N次的循环外加一个长度为N的遍历, 故时间复杂度为O(M*N^3), 未能达到要求。</p>
+
+<p>思路应该是以增加空间使用量为代价来减少外层循环次数。改进后的程序见下篇。</p>
+
+<h3>程序</h3>
+
+<p>给出的语言中Python版本只有2.7:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">copy</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">M</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">g</span> <span class="o">=</span> <span class="p">[</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">tmp</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+            <span class="n">res</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">g</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="ow">or</span> <span class="n">k</span><span class="o">!=</span><span class="n">i</span><span class="p">)</span> <span class="ow">and</span> <span class="n">k</span><span class="o">!=</span><span class="n">j</span><span class="p">])</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">res</span>
+</code></pre></div>
+
+<h3>注意</h3>
+
+<h4>copy.deepcopy</h4>
+
+<p>python中当列表为嵌套列表时, 直接赋值或切片赋值都会导致两个变量指向一个对象:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="n">L1</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]]</span>
+<span class="n">L2</span> <span class="o">=</span> <span class="n">L1</span>
+<span class="n">L3</span> <span class="o">=</span> <span class="n">L1</span><span class="p">[:]</span>
+<span class="n">L1</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">250</span>
+<span class="k">print</span><span class="p">(</span><span class="n">L2</span><span class="p">,</span><span class="n">L3</span><span class="p">)</span>
+<span class="c1"># -&gt; ([[250, 2, 3], [4, 5, 6]], [[250, 2, 3], [4, 5, 6]])</span>
+</code></pre></div>
+
+<h4>M=2和M=3约束不同</h4>
+
+<p>M=2时第一步中起点和终点不能相同, 而M=3时前两步过程中起点和终点可以相同。</p>
+
+<h3>思考</h3>
+
+<p>题目中map矩阵中对角线为0, 表示自己与自己距离为0, 在题目实现时其实可以将对角线的0改成无穷大来对起点终点相同进行惩罚从而简化约束条件。</p>
+
+</body>
+</html>
