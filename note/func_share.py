@@ -26,7 +26,9 @@ def generate_html(path, destination='./source', additional_css='', style=3):
             output_file.write(add_head_and_tail(html_text, html_name[:-5], css, additional_css))
 
 def add_head_and_tail(content, title, css, additional_css):
-    head = '<!DOCTYPE HTML>\n<html>\n<head>\n\t<meta charset=\"utf-8\">\n\t<title>%s</title>\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"css/%s.css\">\n\t%s</head>\n<body>\n' % (title, css, additional_css)
+    latex_support = '''\n\t<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>\n\t<script type="text/x-mathjax-config">\n\t\tMathJax.Hub.Config({\n\t\t\ttex2jax: {inlineMath: [['$', '$']]},\n\t\t\tmessageStyle: "none"});\n\t</script>'''
+
+    head = '<!DOCTYPE HTML>\n<html>\n<head>\n\t<meta charset=\"utf-8\">\n\t<title>{}</title>\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"css/{}.css\">{}\n\t{}</head>\n<body>\n'.format(title, css, latex_support, additional_css)
     tail = '\n</body>\n</html>'
     return head+content+tail
 
