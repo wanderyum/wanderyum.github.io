@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>2019阿里校招编程测试, 光明小学接力赛路径问题(2) – Manfredo的主页</title>
+<meta name="description" content="题目 光明小学的小朋友们要举行一年一度的接力跑大赛了，但是小朋友们却遇到了一个难题：设计接力跑大赛的线路，你能帮助他们完成这项工作么？ 光明小学可以抽象成一张有N个节点的图，每两点间都有一条道路相连。光明小学的每个班都有M个学生，所以你要为他们设计出一条恰好经过M条边的路径。 光明小学的小朋友们希望全盘考虑所有的因素，所以你需要把任意两点 …">
+<meta name="created" content="2018-09-10T16:42:22+0800">
+<meta name="modified" content="2018-09-10T16:42:22+0800">
+
+<meta name="contact" content="wangzhiyu0471@gamil.com">
+<meta property="og:site_name" content="Manfredo的主页">
+<meta property="og:title" content="2019阿里校招编程测试, 光明小学接力赛路径问题(2)">
+<meta property="og:url" content="https://wanderyum.github.io/blogs/2019%E9%98%BF%E9%87%8C%E6%A0%A1%E6%8B%9B%E7%BC%96%E7%A8%8B%E6%B5%8B%E8%AF%95-%E5%85%89%E6%98%8E%E5%B0%8F%E5%AD%A6%E6%8E%A5%E5%8A%9B%E8%B5%9B%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%982/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.64.1" />
+<meta name="msapplication-TileColor" content="#00FF00">
+<meta name="theme-color" content="#00FF00">
+
+
+<link rel="canonical" href="https://wanderyum.github.io/blogs/2019%E9%98%BF%E9%87%8C%E6%A0%A1%E6%8B%9B%E7%BC%96%E7%A8%8B%E6%B5%8B%E8%AF%95-%E5%85%89%E6%98%8E%E5%B0%8F%E5%AD%A6%E6%8E%A5%E5%8A%9B%E8%B5%9B%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%982/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="stylesheet" href="/css/styles.9a3856451d3f4911845551d6f046455bd8cbf120441071c76e7438ba3ac163e1.css">
+<link rel="stylesheet" href="/css/print.27fc184f8670f41a2690985390779e7b20335a8fadff8fa015cf9417ffe50c36.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "2019阿里校招编程测试, 光明小学接力赛路径问题(2)",
+    "datePublished": "2018-09-10T16:42:22+08:00",
+    "dateModified": "2018-09-10T16:42:22+08:00",
+    "url" : "https://wanderyum.github.io/blogs/2019%E9%98%BF%E9%87%8C%E6%A0%A1%E6%8B%9B%E7%BC%96%E7%A8%8B%E6%B5%8B%E8%AF%95-%E5%85%89%E6%98%8E%E5%B0%8F%E5%AD%A6%E6%8E%A5%E5%8A%9B%E8%B5%9B%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%982/",
+    "description": "题目 光明小学的小朋友们要举行一年一度的接力跑大赛了，但是小朋友们却遇到了一个难题：设计接力跑大赛的线路，你能帮助他们完成这项工作么？ 光明小学可以抽象成一张有N个节点的图，每两点间都有一条道路相连。光明小学的每个班都有M个学生，所以你要为他们设计出一条恰好经过M条边的路径。 光明小学的小朋友们希望全盘考虑所有的因素，所以你需要把任意两点 …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wanderyum.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Manfredo的主页",
+      "url": "https://wanderyum.github.io/"
+    }
+  }
+</script>
+
+<script defer src="/js/umbrella.min.b426107371d121c9a56a27aac9e9058ff592a021e2f4c3c94827fe70920d3cbb.js"></script>
+<script defer src="/js/script.min.8e4d91ebe0d9226621e408b7205bd7b009e4935608e4b29c4275116490cc836d.js"></script>
+
+
+</head>
+
+<body>
+<div class="page layout__page layout__sidebar-second">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>Manfredo的主页</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">走马观花</a></li>
+<li><a href="/codes/">滴水穿石</a></li>
+<li><a href="/blogs/">千虑一得</a></li>
+<li><a href="/research/">砥志研思</a></li>
+<li><a href="/cv/">何许人也</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="section-blogs single-view">
+<header>
+<h1 class="title title-submitted">2019阿里校招编程测试, 光明小学接力赛路径问题(2)</h1>
+<div class="submitted">
+<time class="modified-date" datetime="2018-09-10T16:42:22&#43;08:00">10 September, 2018</time>
+</div>
+</header>
+<div class="content">
+<h3 id="题目">题目</h3>
+<p>光明小学的小朋友们要举行一年一度的接力跑大赛了，但是小朋友们却遇到了一个难题：设计接力跑大赛的线路，你能帮助他们完成这项工作么？</p>
+<p>光明小学可以抽象成一张有N个节点的图，每两点间都有一条道路相连。光明小学的每个班都有M个学生，所以你要为他们设计出一条恰好经过M条边的路径。</p>
+<p>光明小学的小朋友们希望全盘考虑所有的因素，所以你需要把任意两点间经过M条边的最短路径的距离输出出来以供参考。</p>
+<p>你需要设计这样一个函数：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">res[][] Solve( N, M, map[][]);
+</code></pre></div><p><strong>注意：map必然是N * N的二维数组，且map[i][j] == map[j][i]，map[i][i] == 0，-1e8 &lt;= map[i][j] &lt;= 1e8。（道路全部是无向边，无自环）2 &lt;= N &lt;= 100, 2 &lt;= M &lt;= 1e6。要求时间复杂度控制在O(N^3*log(M))。</strong></p>
+<p>map数组表示了一张稠密图，其中任意两个不同节点i,j间都有一条边，边的长度为map[i][j]。N表示其中的节点数。</p>
+<p>你要返回的数组也必然是一个N * N的二维数组，表示从i出发走到j，经过M条边的最短路径。
+你的路径中应考虑包含重复边的情况。</p>
+<p>样例:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">N <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+M <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+map <span style="color:#f92672">=</span> {
+{<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>},
+{<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>},
+{<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>}};
+</code></pre></div><p>输出结果:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">result <span style="color:#f92672">=</span> {
+{<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">3</span>},
+{<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>},
+{<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">2</span>}};
+</code></pre></div><p>样例解释:</p>
+<pre><code>1-&gt;1有两种方法: 1-&gt;2-&gt;1(长度为2+2=4), 1-&gt;3-&gt;1（长度为3+3=6）
+2-&gt;2有两种方法: 2-&gt;1-&gt;2(长度为2+2=4), 2-&gt;3-&gt;2（长度为1+1=2）
+1-&gt;1有两种方法: 3-&gt;1-&gt;3(长度为3+3=6), 3-&gt;2-&gt;3（长度为1+1=2）
+1-&gt;2只有一种方法: 1-&gt;3-&gt;2(长度为3+1=4)
+1-&gt;3只有一种方法: 1-&gt;2-&gt;3(长度为2+1=4)
+2-&gt;3只有一种方法: 2-&gt;1-&gt;3(长度为2+3=5)
+根据对称性可以得到其它部分的答案。
+</code></pre><h3 id="思路">思路</h3>
+<h4 id="规范化map">规范化map</h4>
+<p>规范化map主要的好处就是可以将上次得到的约束普遍化。在原始的map里面对起点和终点相同的情况加以惩罚因子, 具体操作就是将起点终点相同的距离设为无穷大, 而不是原来的0。</p>
+<h4 id="构建函数">构建函数</h4>
+<p>程序中需要两个函数:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">graphForM</span>(D, N):
+    <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">combineGraph</span>(g1, g2):
+    <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>
+</code></pre></div><p>其中graphForM的作用是获得M个人时的结果, combineGraph在已知n1个人的结果(g1)和n2个人的结果(g2)来得到n1+n2个人的结果的。</p>
+<h4 id="时间复杂度">时间复杂度</h4>
+<p>外层log(M)次循环, 内层嵌套两层N次的循环外加一个长度为n的遍历, 故时间复杂度为O(log(M)*N^3), 符合题目要求。</p>
+<h3 id="程序">程序</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">combineGraph</span>(g1, g2):
+    h <span style="color:#f92672">=</span> len(g1)
+    res <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(h):
+        res<span style="color:#f92672">.</span>append([])
+        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(h):
+            res[i]<span style="color:#f92672">.</span>append(min([g1[i][k]<span style="color:#f92672">+</span>g2[k][j] <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> range(h)]))
+    <span style="color:#66d9ef">return</span> res
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">graphForM</span>(D, N): 
+    <span style="color:#66d9ef">if</span> N <span style="color:#f92672">in</span> D:
+        <span style="color:#66d9ef">return</span> D[N]
+    <span style="color:#66d9ef">if</span> N <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span>:
+        tmpg <span style="color:#f92672">=</span> combineGraph(graphForM(D, N<span style="color:#f92672">/</span><span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>), graphForM(D, N<span style="color:#f92672">/</span><span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>))
+        D[N] <span style="color:#f92672">=</span> combineGraph(tmpg, D[<span style="color:#ae81ff">1</span>])
+        <span style="color:#66d9ef">return</span> D[N]
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">return</span> combineGraph(graphForM(D, N<span style="color:#f92672">/</span><span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>), graphForM(D, N<span style="color:#f92672">/</span><span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>))
+
+inf <span style="color:#f92672">=</span> <span style="color:#ae81ff">10000</span>
+N <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+M <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+_map <span style="color:#f92672">=</span> [
+[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>],
+[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>],
+[<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>]]
+
+g <span style="color:#f92672">=</span> []
+<span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> _map:
+    tmp <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> item:
+        <span style="color:#66d9ef">if</span> i:
+            tmp<span style="color:#f92672">.</span>append(i)
+        <span style="color:#66d9ef">else</span>:
+            tmp<span style="color:#f92672">.</span>append(inf)
+    g<span style="color:#f92672">.</span>append(tmp)
+
+D <span style="color:#f92672">=</span> {}
+D[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> g 
+<span style="color:#66d9ef">print</span> graphForM(D, M)
+</code></pre></div>
+
+</div>
+</article>
+</main>
+
+
+<aside class="sidebar layout__second-sidebar">
+<section>
+<h4 class="menu"><a href="/blogs/" class="active" aria-current="page">Blogs</a></h4>
+<ul class="menu">
+<li><a href="/blogs/%E8%AE%B0%E6%9F%90%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95%E9%A2%98/">记某网易校招笔试题</a></li>
+<li><a href="/blogs/%E5%9C%A8html%E4%B8%AD%E6%98%BE%E7%A4%BAlatex%E5%85%AC%E5%BC%8F/">使用MathJax在HTML中显示LaTeX公式</a></li>
+<li><a href="/blogs/2019%E9%98%BF%E9%87%8C%E6%A0%A1%E6%8B%9B%E7%BC%96%E7%A8%8B%E6%B5%8B%E8%AF%95-%E5%85%89%E6%98%8E%E5%B0%8F%E5%AD%A6%E6%8E%A5%E5%8A%9B%E8%B5%9B%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%982/" class="active" aria-current="page">2019阿里校招编程测试, 光明小学接力赛路径问题(2)</a></li>
+<li><a href="/blogs/2019%E9%98%BF%E9%87%8C%E6%A0%A1%E6%8B%9B%E7%BC%96%E7%A8%8B%E6%B5%8B%E8%AF%95-%E5%85%89%E6%98%8E%E5%B0%8F%E5%AD%A6%E6%8E%A5%E5%8A%9B%E8%B5%9B%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%981/">2019阿里校招编程测试, 光明小学接力赛路径问题(1)</a></li>
+<li><a href="/blogs/msys2%E9%85%8D%E7%BD%AE/">msys2配置</a></li>
+<li><a href="/blogs/vultrvpsfreefilesync%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E5%90%8C%E6%AD%A5%E7%B3%BB%E7%BB%9F/">Vultr VPS &#43; FreeFileSync搭建远程同步系统</a></li>
+</ul>
+</section>
+</aside>
+<footer class="footer layout__footer">
+<p><span>© Manfredo的主页</span></p>
+
+
+</footer>
+
+</div>
+</body>
+</html>

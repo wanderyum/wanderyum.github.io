@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>msys2配置 – Manfredo的主页</title>
+<meta name="description" content="这里假设你已经成功安装msys2, 并且安装目录为$directory, 比如说长这个样子: C:\ProgramFiles\msys64。 改变软件源 安装好msys后的第一件事是改变软件源, 否则直接连官方服务器速度感人。这里推荐中国科学技术大学的软件源(ustc)。">
+<meta name="created" content="2018-07-14T16:42:22+0800">
+<meta name="modified" content="2018-07-14T16:42:22+0800">
+
+<meta name="contact" content="wangzhiyu0471@gamil.com">
+<meta property="og:site_name" content="Manfredo的主页">
+<meta property="og:title" content="msys2配置">
+<meta property="og:url" content="https://wanderyum.github.io/blogs/msys2%E9%85%8D%E7%BD%AE/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.64.1" />
+<meta name="msapplication-TileColor" content="#00FF00">
+<meta name="theme-color" content="#00FF00">
+
+
+<link rel="canonical" href="https://wanderyum.github.io/blogs/msys2%E9%85%8D%E7%BD%AE/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="stylesheet" href="/css/styles.9a3856451d3f4911845551d6f046455bd8cbf120441071c76e7438ba3ac163e1.css">
+<link rel="stylesheet" href="/css/print.27fc184f8670f41a2690985390779e7b20335a8fadff8fa015cf9417ffe50c36.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "msys2配置",
+    "datePublished": "2018-07-14T16:42:22+08:00",
+    "dateModified": "2018-07-14T16:42:22+08:00",
+    "url" : "https://wanderyum.github.io/blogs/msys2%E9%85%8D%E7%BD%AE/",
+    "description": "这里假设你已经成功安装msys2, 并且安装目录为$directory, 比如说长这个样子: C:\\ProgramFiles\\msys64。 改变软件源 安装好msys后的第一件事是改变软件源, 否则直接连官方服务器速度感人。这里推荐中国科学技术大学的软件源(ustc)。",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wanderyum.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Manfredo的主页",
+      "url": "https://wanderyum.github.io/"
+    }
+  }
+</script>
+
+<script defer src="/js/umbrella.min.b426107371d121c9a56a27aac9e9058ff592a021e2f4c3c94827fe70920d3cbb.js"></script>
+<script defer src="/js/script.min.8e4d91ebe0d9226621e408b7205bd7b009e4935608e4b29c4275116490cc836d.js"></script>
+
+
+</head>
+
+<body>
+<div class="page layout__page layout__sidebar-second">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>Manfredo的主页</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">走马观花</a></li>
+<li><a href="/codes/">滴水穿石</a></li>
+<li><a href="/blogs/">千虑一得</a></li>
+<li><a href="/research/">砥志研思</a></li>
+<li><a href="/cv/">何许人也</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="section-blogs single-view">
+<header>
+<h1 class="title title-submitted">msys2配置</h1>
+<div class="submitted">
+<time class="modified-date" datetime="2018-07-14T16:42:22&#43;08:00">14 July, 2018</time>
+</div>
+</header>
+<div class="content">
+<p>这里假设你已经成功安装<a href="https://www.msys2.org/">msys2</a>, 并且安装目录为<code>$directory</code>, 比如说长这个样子: <code>C:\ProgramFiles\msys64</code>。</p>
+<h3 id="改变软件源">改变软件源</h3>
+<p>安装好msys后的第一件事是改变软件源, 否则直接连官方服务器速度感人。这里推荐中国科学技术大学的软件源(ustc)。</p>
+<ul>
+<li>用记事本打开<code>$directory\etc\pacman.d\mirrorlist.msys</code>, 把ustc源加到第一行:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">## Primary
+## msys2.org
+Server = http://mirrors.ustc.edu.cn/msys2/msys/$arch/
+Server = http://repo.msys2.org/msys/$arch
+Server = https://downloads.sourceforge.net/project/msys2/REPOS/MSYS2/$arch
+Server = http://www2.futureware.at/~nickoe/msys2-mirror/msys/$arch/
+</code></pre></div><ul>
+<li>用记事本打开<code>$directory\etc\pacman.d\mirrorlist.mingw32</code>, 把ustc源加到第一行:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">## Primary
+## msys2.org
+Server = http://mirrors.ustc.edu.cn/msys2/mingw/i686/
+Server = http://repo.msys2.org/mingw/i686
+Server = https://downloads.sourceforge.net/project/msys2/REPOS/MINGW/i686
+Server = http://www2.futureware.at/~nickoe/msys2-mirror/mingw/i686
+</code></pre></div><ul>
+<li>用记事本打开<code>$directory\etc\pacman.d\mirrorlist.mingw64</code>, 把ustc源加到第一行:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">## Primary
+## msys2.org
+Server = http://mirrors.ustc.edu.cn/msys2/mingw/x86_64
+Server = http://repo.msys2.org/mingw/x86_64
+Server = https://downloads.sourceforge.net/project/msys2/REPOS/MINGW/x86_64
+Server = http://www2.futureware.at/~nickoe/msys2-mirror/mingw/x86_64
+</code></pre></div><h3 id="用pacman更新系统以及安装软件">用pacman更新系统以及安装软件</h3>
+<p>msys2用pacman管理软件, 和archlinux是一样的。pacman常用命令:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacman -Syu       <span style="color:#75715e"># 同步软件库并更新系统到最新状态</span> 
+pacman -Ss vim    <span style="color:#75715e"># 搜索软件仓库里名字含有vim的软件包</span>
+pacman -S git     <span style="color:#75715e"># 安装git</span>
+pacman -R git     <span style="color:#75715e"># 删除git</span>
+</code></pre></div><h3 id="添加右键命令msys-here">添加右键命令&quot;msys here&rdquo;</h3>
+<p>以windows 10为例。</p>
+<p>1 找到msys2的安装目录<code>$directory</code>, 新建<code>msys2.bat</code>, 内容如下(将<code>$directory</code>换成自己的路径):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$directory\msys2_shell.cmd -mingw64 -where %cd%
+</code></pre></div><p>2 <code>Win + r</code>启动regedit, 进入<code>HKEY_CLASSES_ROOT\Directory\Background\shell</code>, 新建<strong>项</strong>, 命名为<code>msys2</code>(和cmd、Powershell同一等级)。</p>
+<p>3 右键msys2, 再新建<strong>项</strong>, 命名为<code>command</code>。选中新建的<code>command</code>, 更改右边窗口的值为<code>$directory\msys2.bat</code></p>
+<p>4 右键msys2, 新建<strong>字符串</strong>, 名称为icon, 值为<code>$directory\msys2.ico</code></p>
+<p>在这个过程中, <code>msys2</code>项使系统识别了在右键菜单中要添加名为<code>msys2</code>的选项, <code>command</code>项添加指出关联的程序位置, <code>icon</code>字符串指向要用的图标地址。</p>
+<p>参考文章:</p>
+<p><a href="https://blog.csdn.net/liyuanbhu/article/details/56496501">给 MSYS2 添加中科大的源</a></p>
+<p><a href="https://www.2cto.com/kf/201704/620094.html">pacman常用命令</a></p>
+<p><a href="https://blog.csdn.net/u011924787/article/details/69485944">为msys2添加右键，在当前目录打开</a></p>
+
+
+</div>
+</article>
+</main>
+
+
+<aside class="sidebar layout__second-sidebar">
+<section>
+<h4 class="menu"><a href="/blogs/" class="active" aria-current="page">Blogs</a></h4>
+<ul class="menu">
+<li><a href="/blogs/%E8%AE%B0%E6%9F%90%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95%E9%A2%98/">记某网易校招笔试题</a></li>
+<li><a href="/blogs/%E5%9C%A8html%E4%B8%AD%E6%98%BE%E7%A4%BAlatex%E5%85%AC%E5%BC%8F/">使用MathJax在HTML中显示LaTeX公式</a></li>
+<li><a href="/blogs/2019%E9%98%BF%E9%87%8C%E6%A0%A1%E6%8B%9B%E7%BC%96%E7%A8%8B%E6%B5%8B%E8%AF%95-%E5%85%89%E6%98%8E%E5%B0%8F%E5%AD%A6%E6%8E%A5%E5%8A%9B%E8%B5%9B%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%982/">2019阿里校招编程测试, 光明小学接力赛路径问题(2)</a></li>
+<li><a href="/blogs/2019%E9%98%BF%E9%87%8C%E6%A0%A1%E6%8B%9B%E7%BC%96%E7%A8%8B%E6%B5%8B%E8%AF%95-%E5%85%89%E6%98%8E%E5%B0%8F%E5%AD%A6%E6%8E%A5%E5%8A%9B%E8%B5%9B%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%981/">2019阿里校招编程测试, 光明小学接力赛路径问题(1)</a></li>
+<li><a href="/blogs/msys2%E9%85%8D%E7%BD%AE/" class="active" aria-current="page">msys2配置</a></li>
+<li><a href="/blogs/vultrvpsfreefilesync%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E5%90%8C%E6%AD%A5%E7%B3%BB%E7%BB%9F/">Vultr VPS &#43; FreeFileSync搭建远程同步系统</a></li>
+</ul>
+</section>
+</aside>
+<footer class="footer layout__footer">
+<p><span>© Manfredo的主页</span></p>
+
+
+</footer>
+
+</div>
+</body>
+</html>
