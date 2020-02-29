@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>MSYS2中用GCC编译动态库与静态库 – Manfredo的主页</title>
+<meta name="description" content="MSYS2(Minimal SYStem 2)是MSYS的一个升级版,准确的说是集成了pacman和Mingw-w64的Cygwin升级版, 提供了bash shell等linux环境、版本控制软件（git/hg）和MinGW-w64 工具链。">
+<meta name="created" content="2020-02-29T16:43:07+0800">
+<meta name="modified" content="2020-02-29T16:43:07+0800">
+
+<meta name="contact" content="wangzhiyu0471@gamil.com">
+<meta property="og:site_name" content="Manfredo的主页">
+<meta property="og:title" content="MSYS2中用GCC编译动态库与静态库">
+<meta property="og:url" content="https://wanderyum.github.io/blogs/msys2%E4%B8%AD%E7%94%A8gcc%E7%BC%96%E8%AF%91%E5%8A%A8%E6%80%81%E5%BA%93%E4%B8%8E%E9%9D%99%E6%80%81%E5%BA%93/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.64.1" />
+<meta name="msapplication-TileColor" content="#00FF00">
+<meta name="theme-color" content="#00FF00">
+
+
+<link rel="canonical" href="https://wanderyum.github.io/blogs/msys2%E4%B8%AD%E7%94%A8gcc%E7%BC%96%E8%AF%91%E5%8A%A8%E6%80%81%E5%BA%93%E4%B8%8E%E9%9D%99%E6%80%81%E5%BA%93/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="stylesheet" href="/css/styles.9a3856451d3f4911845551d6f046455bd8cbf120441071c76e7438ba3ac163e1.css">
+<link rel="stylesheet" href="/css/print.27fc184f8670f41a2690985390779e7b20335a8fadff8fa015cf9417ffe50c36.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "MSYS2中用GCC编译动态库与静态库",
+    "datePublished": "2020-02-29T16:43:07+08:00",
+    "dateModified": "2020-02-29T16:43:07+08:00",
+    "url" : "https://wanderyum.github.io/blogs/msys2%E4%B8%AD%E7%94%A8gcc%E7%BC%96%E8%AF%91%E5%8A%A8%E6%80%81%E5%BA%93%E4%B8%8E%E9%9D%99%E6%80%81%E5%BA%93/",
+    "description": "MSYS2(Minimal SYStem 2)是MSYS的一个升级版,准确的说是集成了pacman和Mingw-w64的Cygwin升级版, 提供了bash shell等linux环境、版本控制软件（git/hg）和MinGW-w64 工具链。",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wanderyum.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Manfredo的主页",
+      "url": "https://wanderyum.github.io/"
+    }
+  }
+</script>
+
+<script defer src="/js/umbrella.min.b426107371d121c9a56a27aac9e9058ff592a021e2f4c3c94827fe70920d3cbb.js"></script>
+<script defer src="/js/script.min.8e4d91ebe0d9226621e408b7205bd7b009e4935608e4b29c4275116490cc836d.js"></script>
+
+
+</head>
+
+<body>
+<div class="page layout__page layout__sidebar-second">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>Manfredo的主页</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">走马观花</a></li>
+<li><a href="/codes/">滴水穿石</a></li>
+<li><a href="/blogs/">千虑一得</a></li>
+<li><a href="/research/">砥志研思</a></li>
+<li><a href="/cv/">何许人也</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="section-blogs single-view">
+<header>
+<h1 class="title title-submitted">MSYS2中用GCC编译动态库与静态库</h1>
+<div class="submitted">
+<time class="modified-date" datetime="2020-02-29T16:43:07&#43;08:00">29 February, 2020</time>
+</div>
+</header>
+<div class="content">
+<p>MSYS2(Minimal SYStem 2)是MSYS的一个升级版,准确的说是集成了pacman和Mingw-w64的Cygwin升级版, 提供了bash shell等linux环境、版本控制软件（git/hg）和MinGW-w64 工具链。<br>
+这里我们用MSYS2中的GCC来编译与使用动态/静态库。<br>
+首先把我们需要封装成库文件的函数的头文件与源文件写好，如下:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//myAPI.h
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">ADD</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b);
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">MINUS</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b);
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//myAPI.cpp
+</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&#34;myAPI.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span> 
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">ADD</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b){
+    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b;
+}
+ 
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">MINUS</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b){
+    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">-</span> b;
+}
+</code></pre></div><p>接下来准备一个测试用的主函数源文件:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">//main.cpp
+</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&#34;myAPI.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span> 
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">1 + 1 = </span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> ADD(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>) <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">1 - 1 = </span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> MINUS(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>) <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p>编译<code>myAPI.cpp</code>文件生成<code>myAPI.o</code>目标文件, 我们将会把生成的目标文件分别编译为静态库和动态库:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">g++ -c myAPI.cpp
+</code></pre></div><h3 id="静态库的编译与使用-">静态库的编译与使用</h3>
+<p>linux下用生成静态库的命令<code>ar</code>处理<code>myAPI.o</code>文件生成静态库文件，<strong>生成的库文件应遵循规范，即linux下库文件加“lib”前缀</strong>。</p>
+<p>ar 是 Linux 的一个备份压缩命令，它可以将多个文件打包成一个备份文件（也叫归档文件），也可以从备份文件中提取成员文件。ar 命令最常见的用法是将目标文件打包为静态链接库。</p>
+<ul>
+<li>参数 r 用来替换库中已有的目标文件，或者加入新的目标文件。</li>
+<li>参数 c 表示创建一个库。不管库否存在，都将创建。　</li>
+<li>参数 s 用来创建目标文件索引，这在创建较大的库时能提高速度。</li>
+</ul>
+<p>例如，下面的写法表示将目标文件 a.o、b.o 和 c.o 打包成一个静态库文件<code>libdemo.a</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ar rcs libdemo.a a.o b.o c.o
+</code></pre></div><p>所以针对本例，通过如下一条命令即可生成<code>libmyAPI.a</code>静态库:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ar rcs libmyAPI.a myAPI.o
+</code></pre></div><p>接下来即可在项目编译过程中利用静态库了，此时<code>myAPI.cpp</code>这个库函数的定义文件已经不需要了, 但<code>myAPI.h</code>依然需要，因为<code>main.cpp</code>引用了该头文件。<code>main.cpp</code>编译命令如下(注意，依赖的静态库文件要放在被依赖项后面):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">g++ main.cpp libmyAPI.a -o static.exe
+</code></pre></div><p>编译通过后生成可执行文件<code>static.exe</code>, 此时 <code>libmyAPI.a</code>也已经是不需要的了。</p>
+<h3 id="动态库的编译与使用-">动态库的编译与使用</h3>
+<p>linux下编译时通过<code>-shared</code>参数可以生成动态库(.so)文件, <code>-fPIC</code>表明使用地址无关代码。PIC：Position Independent Code。具体命令如下:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">g++ -shared -fPIC -o libmyAPI.so myAPI.o
+</code></pre></div><p>生成的动态库在编译时需要声明, <del>运行时需要被依赖</del>。声明如下:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">g++ main.cpp -L. -lmyAPI -o dynamic.exe
+</code></pre></div><p>“-L.”标记告诉G++函数库可能位于当前目录; 使用“-lmyAPI”标记来告诉G++驱动程序在连接阶段引用共享函数库<code>libmyAPI.so</code>。</p>
+<p>另外笔者没有发现别人所说生成的可执行文件<code>dynamic.exe</code>在运行说找不到<code>libmyAPI.so</code>的情况。</p>
+<h5 id="参考链接-">参考链接:</h5>
+<p><a href="https://blog.csdn.net/seanwang_25/article/details/20702751">Linux下g++编译与使用静态库和动态库</a><br>
+<a href="http://c.biancheng.net/view/7168.html">GCC创建和使用静态链接库（.a文件）</a></p>
+
+
+</div>
+</article>
+</main>
+
+
+<aside class="sidebar layout__second-sidebar">
+<section>
+<h4 class="menu"><a href="/blogs/" class="active" aria-current="page">My Blogs</a></h4>
+<ul class="menu">
+<li><a href="/blogs/msys2%E4%B8%AD%E7%94%A8gcc%E7%BC%96%E8%AF%91%E5%8A%A8%E6%80%81%E5%BA%93%E4%B8%8E%E9%9D%99%E6%80%81%E5%BA%93/" class="active" aria-current="page">MSYS2中用GCC编译动态库与静态库</a></li>
+<li><a href="/blogs/c&#43;&#43;%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6%E5%AD%97%E7%AC%A6%E4%B8%B2/">C&#43;&#43;学习笔记(输入输出，文件，字符串)</a></li>
+<li><a href="/blogs/python%E7%88%AC%E8%99%AB%E5%88%9D%E6%8E%A2/">Python爬虫初探--爬取豆瓣电影TOP250</a></li>
+<li><a href="/blogs/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80%E7%AF%87/">Java学习笔记(基础篇)</a></li>
+<li><a href="/blogs/%E8%AE%B0%E6%9F%90%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95%E9%A2%98/">记某网易校招笔试题</a></li>
+<li><a href="/blogs/misc/%E5%9C%A8html%E4%B8%AD%E6%98%BE%E7%A4%BAlatex%E5%85%AC%E5%BC%8F/">使用MathJax在HTML中显示LaTeX公式</a></li>
+<li><a href="/blogs/2019%E9%98%BF%E9%87%8C%E6%A0%A1%E6%8B%9B%E7%BC%96%E7%A8%8B%E6%B5%8B%E8%AF%95-%E5%85%89%E6%98%8E%E5%B0%8F%E5%AD%A6%E6%8E%A5%E5%8A%9B%E8%B5%9B%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%982/">2019阿里校招编程测试, 光明小学接力赛路径问题(2)</a></li>
+<li><a href="/blogs/2019%E9%98%BF%E9%87%8C%E6%A0%A1%E6%8B%9B%E7%BC%96%E7%A8%8B%E6%B5%8B%E8%AF%95-%E5%85%89%E6%98%8E%E5%B0%8F%E5%AD%A6%E6%8E%A5%E5%8A%9B%E8%B5%9B%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%981/">2019阿里校招编程测试, 光明小学接力赛路径问题(1)</a></li>
+<li><a href="/blogs/misc/msys2%E9%85%8D%E7%BD%AE/">msys2配置</a></li>
+<li><a href="/blogs/misc/vultrvpsfreefilesync%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E5%90%8C%E6%AD%A5%E7%B3%BB%E7%BB%9F/">Vultr VPS &#43; FreeFileSync搭建远程同步系统</a></li>
+</ul>
+</section>
+</aside>
+<footer class="footer layout__footer">
+<p><span>© Manfredo的主页</span></p>
+
+
+</footer>
+
+</div>
+</body>
+</html>

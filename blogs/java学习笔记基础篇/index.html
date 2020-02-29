@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Java学习笔记(基础篇) – Manfredo的主页</title>
+<meta name="description" content="变量声明与赋值 int a; double b; boolean c = true; final char d = &amp;#39;\n&amp;#39;; // 不可变字符串 b = 2.">
+<meta name="created" content="2020-02-21T21:49:04+0800">
+<meta name="modified" content="2020-02-21T21:49:04+0800">
+
+<meta name="contact" content="wangzhiyu0471@gamil.com">
+<meta property="og:site_name" content="Manfredo的主页">
+<meta property="og:title" content="Java学习笔记(基础篇)">
+<meta property="og:url" content="https://wanderyum.github.io/blogs/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80%E7%AF%87/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.64.1" />
+<meta name="msapplication-TileColor" content="#00FF00">
+<meta name="theme-color" content="#00FF00">
+
+
+<link rel="canonical" href="https://wanderyum.github.io/blogs/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80%E7%AF%87/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="stylesheet" href="/css/styles.9a3856451d3f4911845551d6f046455bd8cbf120441071c76e7438ba3ac163e1.css">
+<link rel="stylesheet" href="/css/print.27fc184f8670f41a2690985390779e7b20335a8fadff8fa015cf9417ffe50c36.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "Java学习笔记(基础篇)",
+    "datePublished": "2020-02-21T21:49:04+08:00",
+    "dateModified": "2020-02-21T21:49:04+08:00",
+    "url" : "https://wanderyum.github.io/blogs/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80%E7%AF%87/",
+    "description": "变量声明与赋值 int a; double b; boolean c = true; final char d = \u0026#39;\\n\u0026#39;; // 不可变字符串 b = 2.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wanderyum.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Manfredo的主页",
+      "url": "https://wanderyum.github.io/"
+    }
+  }
+</script>
+
+<script defer src="/js/umbrella.min.b426107371d121c9a56a27aac9e9058ff592a021e2f4c3c94827fe70920d3cbb.js"></script>
+<script defer src="/js/script.min.8e4d91ebe0d9226621e408b7205bd7b009e4935608e4b29c4275116490cc836d.js"></script>
+
+
+</head>
+
+<body>
+<div class="page layout__page layout__sidebar-second">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>Manfredo的主页</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">走马观花</a></li>
+<li><a href="/codes/">滴水穿石</a></li>
+<li><a href="/blogs/">千虑一得</a></li>
+<li><a href="/research/">砥志研思</a></li>
+<li><a href="/cv/">何许人也</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="section-blogs single-view">
+<header>
+<h1 class="title title-submitted">Java学习笔记(基础篇)</h1>
+<div class="submitted">
+<time class="modified-date" datetime="2020-02-21T21:49:04&#43;08:00">21 February, 2020</time>
+</div>
+</header>
+<div class="content">
+<h3 id="变量声明与赋值-">变量声明与赋值</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> a<span style="color:#f92672">;</span>
+<span style="color:#66d9ef">double</span> b<span style="color:#f92672">;</span>
+<span style="color:#66d9ef">boolean</span> c <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+<span style="color:#66d9ef">final</span> <span style="color:#66d9ef">char</span> d <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\n&#39;</span><span style="color:#f92672">;</span>    <span style="color:#75715e">// 不可变字符串
+</span><span style="color:#75715e"></span>b <span style="color:#f92672">=</span> 2<span style="color:#f92672">.</span><span style="color:#a6e22e">2</span><span style="color:#f92672">;</span>
+a <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span>b<span style="color:#f92672">;</span>
+c <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>c <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><hr>
+<hr>
+<h3 id="数据输入与输出-">数据输入与输出</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.util.Scanner<span style="color:#f92672">;</span>
+
+Scanner in <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Scanner<span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+a <span style="color:#f92672">=</span> in<span style="color:#f92672">.</span><span style="color:#a6e22e">nextInt</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+b <span style="color:#f92672">=</span> in<span style="color:#f92672">.</span><span style="color:#a6e22e">nextDouble</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">print</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Without \\n&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">+</span> a <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;,\n&#34;</span> <span style="color:#f92672">+</span> b<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><hr>
+<hr>
+<h3 id="条件与分支-">条件与分支</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>a<span style="color:#f92672">&gt;</span>b<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;a&gt;b&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>a<span style="color:#f92672">&lt;</span>b<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;a&lt;b&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+<span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;a==b&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">switch</span> <span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">case</span> 1<span style="color:#f92672">:</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;a==1&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">case</span> 250<span style="color:#f92672">:</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;You fool&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Default&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="循环-">循环</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+    <span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">do</span><span style="color:#f92672">{</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Do something&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span><span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>a<span style="color:#f92672">&lt;</span>b<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+
+tag1:
+<span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>0<span style="color:#f92672">;</span> i<span style="color:#f92672">&lt;</span>a<span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j<span style="color:#f92672">=</span>0<span style="color:#f92672">;</span> j<span style="color:#f92672">&lt;</span>a<span style="color:#f92672">;</span> j<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;i=&#34;</span><span style="color:#f92672">+</span>i<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;, j=&#34;</span><span style="color:#f92672">+</span>j<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">break</span> tag1<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="数组-">数组</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> 5<span style="color:#f92672">;</span>
+<span style="color:#66d9ef">int</span><span style="color:#f92672">[</span><span style="color:#f92672">]</span> arr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>a<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
+<span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>0<span style="color:#f92672">;</span> i<span style="color:#f92672">&lt;</span>arr<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+    arr<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> i<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+<span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x <span style="color:#f92672">:</span> arr<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>x<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="数学-">数学</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">a <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">abs</span><span style="color:#f92672">(</span><span style="color:#f92672">-</span>12<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+b <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">pow</span><span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> 3<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+a <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">round</span><span style="color:#f92672">(</span>12<span style="color:#f92672">.</span><span style="color:#a6e22e">234</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+b <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">random</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">*</span>100<span style="color:#f92672">;</span>
+</code></pre></div><h3 id="字符串-">字符串</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;01234567890&#34;</span><span style="color:#f92672">;</span>
+s <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;123&#34;</span><span style="color:#f92672">;</span>
+
+String s1 <span style="color:#f92672">=</span> in<span style="color:#f92672">.</span><span style="color:#a6e22e">nextLine</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>  <span style="color:#75715e">// 读入一行
+</span><span style="color:#75715e"></span>String s2 <span style="color:#f92672">=</span> in<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>      <span style="color:#75715e">// 读入一个单词，以空格(广义)结束
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">/* 比较 */</span>
+s1<span style="color:#f92672">=</span><span style="color:#f92672">=</span>s2<span style="color:#f92672">;</span>         <span style="color:#75715e">// 比较地址
+</span><span style="color:#75715e"></span>s1<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>s2<span style="color:#f92672">)</span><span style="color:#f92672">;</span>  <span style="color:#75715e">// 比较内容
+</span><span style="color:#75715e"></span>s1<span style="color:#f92672">.</span><span style="color:#a6e22e">compareTo</span><span style="color:#f92672">(</span>s2<span style="color:#f92672">)</span><span style="color:#f92672">;</span>   <span style="color:#75715e">// 比大小: s1大-&gt;正数, 相等-&gt;0, s1小-&gt;负数
+</span><span style="color:#75715e"></span>
+s1<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>        <span style="color:#75715e">// 获取长度
+</span><span style="color:#75715e"></span>s1<span style="color:#f92672">.</span><span style="color:#a6e22e">charAt</span><span style="color:#f92672">(</span>4<span style="color:#f92672">)</span><span style="color:#f92672">;</span>       <span style="color:#75715e">// 获取指定位置字符
+</span><span style="color:#75715e"></span>s1<span style="color:#f92672">.</span><span style="color:#a6e22e">substring</span><span style="color:#f92672">(</span>1<span style="color:#f92672">)</span><span style="color:#f92672">;</span>    <span style="color:#75715e">// 从位置1到末尾的子串
+</span><span style="color:#75715e"></span>s1<span style="color:#f92672">.</span><span style="color:#a6e22e">substring</span><span style="color:#f92672">(</span>2<span style="color:#f92672">,</span>4<span style="color:#f92672">)</span><span style="color:#f92672">;</span>  <span style="color:#75715e">// 子串, 含2不含4
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">/* 索引 */</span>
+s<span style="color:#f92672">.</span><span style="color:#a6e22e">indexOf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;2&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>         <span style="color:#75715e">// 找字符2, 返回位置(整数), 不存在返回-1
+</span><span style="color:#75715e"></span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">indexOf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;2&#34;</span><span style="color:#f92672">,</span> 3<span style="color:#f92672">)</span><span style="color:#f92672">;</span>      <span style="color:#75715e">// 找字符2, 从位置3开始找(含位置3), 返回位置(整数)
+</span><span style="color:#75715e"></span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">lastIndexOf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;2&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>     <span style="color:#75715e">// 类似, 从右往左
+</span><span style="color:#75715e"></span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">lastIndexOf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;2&#34;</span><span style="color:#f92672">,</span> 3<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+
+s<span style="color:#f92672">.</span><span style="color:#a6e22e">startsWith</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;234&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+s<span style="color:#f92672">.</span><span style="color:#a6e22e">endsWith</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;0123&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+s<span style="color:#f92672">.</span><span style="color:#a6e22e">trim</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>               <span style="color:#75715e">// 去掉首尾广义空格
+</span><span style="color:#75715e"></span>s <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span><span style="color:#a6e22e">replace</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;0&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;bbc&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+s <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span><span style="color:#a6e22e">toUpperCase</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+s <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span><span style="color:#a6e22e">toLowerCase</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><h3 id="函数-">函数</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/* 定义 */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">myRandom</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">random</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">*</span>n<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+<span style="color:#75715e">/* 调用 */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[</span><span style="color:#f92672">]</span> args<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">int</span> num <span style="color:#f92672">=</span> 50<span style="color:#f92672">;</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>myRandom<span style="color:#f92672">(</span>num<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div>
+
+</div>
+</article>
+</main>
+
+
+<aside class="sidebar layout__second-sidebar">
+<section>
+<h4 class="menu"><a href="/blogs/" class="active" aria-current="page">My Blogs</a></h4>
+<ul class="menu">
+<li><a href="/blogs/msys2%E4%B8%AD%E7%94%A8gcc%E7%BC%96%E8%AF%91%E5%8A%A8%E6%80%81%E5%BA%93%E4%B8%8E%E9%9D%99%E6%80%81%E5%BA%93/">MSYS2中用GCC编译动态库与静态库</a></li>
+<li><a href="/blogs/c&#43;&#43;%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6%E5%AD%97%E7%AC%A6%E4%B8%B2/">C&#43;&#43;学习笔记(输入输出，文件，字符串)</a></li>
+<li><a href="/blogs/python%E7%88%AC%E8%99%AB%E5%88%9D%E6%8E%A2/">Python爬虫初探--爬取豆瓣电影TOP250</a></li>
+<li><a href="/blogs/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80%E7%AF%87/" class="active" aria-current="page">Java学习笔记(基础篇)</a></li>
+<li><a href="/blogs/%E8%AE%B0%E6%9F%90%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95%E9%A2%98/">记某网易校招笔试题</a></li>
+<li><a href="/blogs/misc/%E5%9C%A8html%E4%B8%AD%E6%98%BE%E7%A4%BAlatex%E5%85%AC%E5%BC%8F/">使用MathJax在HTML中显示LaTeX公式</a></li>
+<li><a href="/blogs/2019%E9%98%BF%E9%87%8C%E6%A0%A1%E6%8B%9B%E7%BC%96%E7%A8%8B%E6%B5%8B%E8%AF%95-%E5%85%89%E6%98%8E%E5%B0%8F%E5%AD%A6%E6%8E%A5%E5%8A%9B%E8%B5%9B%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%982/">2019阿里校招编程测试, 光明小学接力赛路径问题(2)</a></li>
+<li><a href="/blogs/2019%E9%98%BF%E9%87%8C%E6%A0%A1%E6%8B%9B%E7%BC%96%E7%A8%8B%E6%B5%8B%E8%AF%95-%E5%85%89%E6%98%8E%E5%B0%8F%E5%AD%A6%E6%8E%A5%E5%8A%9B%E8%B5%9B%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%981/">2019阿里校招编程测试, 光明小学接力赛路径问题(1)</a></li>
+<li><a href="/blogs/misc/msys2%E9%85%8D%E7%BD%AE/">msys2配置</a></li>
+<li><a href="/blogs/misc/vultrvpsfreefilesync%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E5%90%8C%E6%AD%A5%E7%B3%BB%E7%BB%9F/">Vultr VPS &#43; FreeFileSync搭建远程同步系统</a></li>
+</ul>
+</section>
+</aside>
+<footer class="footer layout__footer">
+<p><span>© Manfredo的主页</span></p>
+
+
+</footer>
+
+</div>
+</body>
+</html>
