@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>一个无聊的C&#43;&#43;测试 – Manfredo的主页</title>
+<meta name="description" content="忽然心血来潮想比较一下不同情况下使用if语句和其他写法的性能差距。 测试环境: Win10 x64, MSYS2中的g&#43;&#43;">
+<meta name="created" content="2020-03-01T16:24:18+0800">
+<meta name="modified" content="2020-03-01T16:24:18+0800">
+
+<meta name="contact" content="wangzhiyu0471@gamil.com">
+<meta property="og:site_name" content="Manfredo的主页">
+<meta property="og:title" content="一个无聊的C&#43;&#43;测试">
+<meta property="og:url" content="https://wanderyum.github.io/blogs/%E4%B8%80%E4%B8%AA%E6%97%A0%E8%81%8A%E7%9A%84c&#43;&#43;%E6%B5%8B%E8%AF%95/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.64.1" />
+<meta name="msapplication-TileColor" content="#00FF00">
+<meta name="theme-color" content="#00FF00">
+
+
+<link rel="canonical" href="https://wanderyum.github.io/blogs/%E4%B8%80%E4%B8%AA%E6%97%A0%E8%81%8A%E7%9A%84c&#43;&#43;%E6%B5%8B%E8%AF%95/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="stylesheet" href="/css/styles.9a3856451d3f4911845551d6f046455bd8cbf120441071c76e7438ba3ac163e1.css">
+<link rel="stylesheet" href="/css/print.27fc184f8670f41a2690985390779e7b20335a8fadff8fa015cf9417ffe50c36.css" media="print">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "一个无聊的C++测试",
+    "datePublished": "2020-03-01T16:24:18+08:00",
+    "dateModified": "2020-03-01T16:24:18+08:00",
+    "url" : "https://wanderyum.github.io/blogs/%E4%B8%80%E4%B8%AA%E6%97%A0%E8%81%8A%E7%9A%84c++%E6%B5%8B%E8%AF%95/",
+    "description": "忽然心血来潮想比较一下不同情况下使用if语句和其他写法的性能差距。 测试环境: Win10 x64, MSYS2中的g++",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wanderyum.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Manfredo的主页",
+      "url": "https://wanderyum.github.io/"
+    }
+  }
+</script>
+
+<script defer src="/js/umbrella.min.b426107371d121c9a56a27aac9e9058ff592a021e2f4c3c94827fe70920d3cbb.js"></script>
+<script defer src="/js/script.min.8e4d91ebe0d9226621e408b7205bd7b009e4935608e4b29c4275116490cc836d.js"></script>
+
+
+</head>
+
+<body>
+<div class="page layout__page layout__sidebar-second">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>Manfredo的主页</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">走马观花</a></li>
+<li><a href="/codes/">滴水穿石</a></li>
+<li><a href="/blogs/">千虑一得</a></li>
+<li><a href="/research/">砥志研思</a></li>
+<li><a href="/cv/">何许人也</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="section-blogs single-view">
+<header>
+<h1 class="title title-submitted">一个无聊的C&#43;&#43;测试</h1>
+<div class="submitted">
+<time class="modified-date" datetime="2020-03-01T16:24:18&#43;08:00">1 March, 2020</time>
+</div>
+</header>
+<div class="content">
+<p>忽然心血来潮想比较一下不同情况下使用<code>if</code>语句和其他写法的性能差距。<br>
+测试环境: Win10 x64, MSYS2中的g++</p>
+<h3 id="方法-">方法</h3>
+<p>通过调用<code>time.h</code>中的<code>clock()</code>方法获得当前时钟打点，运行待比较函数，运行完继续获取当前打点。两个打点数的差可以代表运行的时间。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#</span><span style="color:#75715e">include</span><span style="color:#75715e">&lt;ctime&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+    clock_t start, stop;
+    <span style="color:#66d9ef">double</span> duration;
+    start <span style="color:#f92672">=</span> clock();
+    f();
+    stop <span style="color:#f92672">=</span> clock();
+    duration <span style="color:#f92672">=</span> (<span style="color:#66d9ef">double</span>)(start<span style="color:#f92672">-</span>stop)<span style="color:#f92672">/</span>CLK_TCK;
+
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h3 id="情形1-ifelse-和---">情形1: <code>if</code>/<code>else</code> 和 <code>?</code> <code>:</code></h3>
+<p>编写两个测试函数:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">if_test</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b, <span style="color:#66d9ef">long</span> count){
+    <span style="color:#66d9ef">long</span> l<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">double</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>count; i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>){
+        <span style="color:#66d9ef">if</span> (a<span style="color:#f92672">&gt;</span>b){
+            l<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+        }
+        <span style="color:#66d9ef">else</span>{
+            l<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+        }
+    }
+}
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">if_test_</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b, <span style="color:#66d9ef">long</span> count){
+    <span style="color:#66d9ef">long</span> l<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">double</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>count; i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>){
+        <span style="color:#66d9ef">if</span> (a<span style="color:#f92672">&gt;</span>b){
+            l<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+        }
+        <span style="color:#66d9ef">else</span>{
+            l<span style="color:#f92672">-</span><span style="color:#f92672">-</span>;
+        }
+    }
+}
+</code></pre></div><p>这里测试了运行10^9次, 结果如下, 单位是时钟打点数:</p>
+<pre><code>Clocks of if_test for 1e+09 times: 3875
+Clocks of qm_test for 1e+09 times: 3734
+</code></pre><p><strong>结论: 用if/else和用? :没啥区别</strong></p>
+<h3 id="情形2-判断大于-">情形2: 判断大于</h3>
+<p>假设有一个变量<code>flag</code>来表示数字<code>a</code>是否大于<code>b</code>, 若大于或等于, 则为正数, 否则为<code>0</code>。有两种写法:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">int</span> flag;
+<span style="color:#75715e">/* 方法1 */</span>
+<span style="color:#66d9ef">if</span> (a<span style="color:#f92672">&gt;</span>b) flag<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+<span style="color:#66d9ef">else</span> flag<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+<span style="color:#75715e">/* 方法2 */</span>
+flag <span style="color:#f92672">=</span> a <span style="color:#f92672">/</span> b;
+</code></pre></div><p>编写测试函数如下:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test1</span>(<span style="color:#66d9ef">int</span> a,<span style="color:#66d9ef">int</span> b,<span style="color:#66d9ef">long</span> count){
+    <span style="color:#66d9ef">int</span> flag;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">long</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>count; i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>){
+        <span style="color:#66d9ef">if</span> (a<span style="color:#f92672">&gt;</span>b) flag <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        <span style="color:#66d9ef">else</span> flag <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    }
+}
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test2</span>(<span style="color:#66d9ef">int</span> a,<span style="color:#66d9ef">int</span> b,<span style="color:#66d9ef">long</span> count){
+    <span style="color:#66d9ef">int</span> flag;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">long</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>count; i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>){
+        flag <span style="color:#f92672">=</span> a <span style="color:#f92672">/</span> b;
+    }
+}
+</code></pre></div><p>这里测试了运行10^9次, 结果如下, 单位是时钟打点数:</p>
+<pre><code>Clocks of test1 for 1000000000 times: 2843
+Clocks of test2 for 1000000000 times: 3719
+</code></pre><p><strong>结论: 还是用if/else更快</strong></p>
+
+
+</div>
+</article>
+</main>
+
+
+<aside class="sidebar layout__second-sidebar">
+<section>
+<h4 class="menu"><a href="/blogs/" class="active" aria-current="page">My Blogs</a></h4>
+<ul class="menu">
+<li><a href="/blogs/%E4%B8%80%E4%B8%AA%E6%97%A0%E8%81%8A%E7%9A%84c&#43;&#43;%E6%B5%8B%E8%AF%95/" class="active" aria-current="page">一个无聊的C&#43;&#43;测试</a></li>
+<li><a href="/blogs/msys2%E4%B8%AD%E7%94%A8gcc%E7%BC%96%E8%AF%91%E5%8A%A8%E6%80%81%E5%BA%93%E4%B8%8E%E9%9D%99%E6%80%81%E5%BA%93/">MSYS2中用GCC编译动态库与静态库</a></li>
+<li><a href="/blogs/c&#43;&#43;%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6%E5%AD%97%E7%AC%A6%E4%B8%B2/">C&#43;&#43;学习笔记(输入输出，文件，字符串)</a></li>
+<li><a href="/blogs/python%E7%88%AC%E8%99%AB%E5%88%9D%E6%8E%A2/">Python爬虫初探--爬取豆瓣电影TOP250</a></li>
+<li><a href="/blogs/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9F%BA%E7%A1%80%E7%AF%87/">Java学习笔记(基础篇)</a></li>
+<li><a href="/blogs/%E8%AE%B0%E6%9F%90%E7%BD%91%E6%98%93%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95%E9%A2%98/">记某网易校招笔试题</a></li>
+<li><a href="/blogs/misc/%E5%9C%A8html%E4%B8%AD%E6%98%BE%E7%A4%BAlatex%E5%85%AC%E5%BC%8F/">使用MathJax在HTML中显示LaTeX公式</a></li>
+<li><a href="/blogs/2019%E9%98%BF%E9%87%8C%E6%A0%A1%E6%8B%9B%E7%BC%96%E7%A8%8B%E6%B5%8B%E8%AF%95-%E5%85%89%E6%98%8E%E5%B0%8F%E5%AD%A6%E6%8E%A5%E5%8A%9B%E8%B5%9B%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%982/">2019阿里校招编程测试, 光明小学接力赛路径问题(2)</a></li>
+<li><a href="/blogs/2019%E9%98%BF%E9%87%8C%E6%A0%A1%E6%8B%9B%E7%BC%96%E7%A8%8B%E6%B5%8B%E8%AF%95-%E5%85%89%E6%98%8E%E5%B0%8F%E5%AD%A6%E6%8E%A5%E5%8A%9B%E8%B5%9B%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%981/">2019阿里校招编程测试, 光明小学接力赛路径问题(1)</a></li>
+<li><a href="/blogs/misc/msys2%E9%85%8D%E7%BD%AE/">msys2配置</a></li>
+<li><a href="/blogs/misc/vultrvpsfreefilesync%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E5%90%8C%E6%AD%A5%E7%B3%BB%E7%BB%9F/">Vultr VPS &#43; FreeFileSync搭建远程同步系统</a></li>
+</ul>
+</section>
+</aside>
+<footer class="footer layout__footer">
+<p><span>© Manfredo的主页</span></p>
+
+
+</footer>
+
+</div>
+</body>
+</html>
